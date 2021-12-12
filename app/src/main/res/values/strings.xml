@@ -2,4 +2,8 @@
     <string name="app_name">NumberFacts</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="btn_search">Search</string>
+    <string name="btn_random">Get random</string>
+    <string name="tv_top">Find something interesting ...</string>
+    <string name="edit_text_hint">Enter number</string>
 </resources>

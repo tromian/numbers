@@ -9,6 +9,8 @@ import com.tromian.test.numberfacts.data.NumbersRepositoryImpl
 import com.tromian.test.numberfacts.data.db.NumbersDB
 import com.tromian.test.numberfacts.data.network.NumbersApi
 import com.tromian.test.numberfacts.model.NumbersRepository
+import com.tromian.test.numberfacts.presentation.MainActivity
+import com.tromian.test.numberfacts.presentation.main.MainScreenFragment
 import dagger.BindsInstance
 import dagger.Component
 import dagger.Module
@@ -23,6 +25,8 @@ import javax.inject.Singleton
 @Component(modules = [AppModule::class])
 @Singleton
 interface AppComponent {
+
+    fun inject(fragment: MainScreenFragment)
 
     @Component.Factory
     interface Builder {
@@ -40,7 +44,6 @@ interface AppComponent {
 class AppModule {
 
     @Provides
-    @Singleton
     fun provideRepository(
         localDB: NumbersDB,
         numbersApi: NumbersApi,
@@ -53,6 +56,7 @@ class AppModule {
 @Module
 class NetworkModule {
     @Provides
+    @Singleton
     fun provideWeatherService(): NumbersApi {
         val authInterceptor = Interceptor { chain ->
             val newUrl = chain.request().url
@@ -61,13 +65,13 @@ class NetworkModule {
 
             val newRequest = chain.request()
                 .newBuilder()
-                .addHeader("Content-Type","application/json")
                 .url(newUrl)
                 .build()
 
             chain.proceed(newRequest)
 
         }
+
 
         val client = OkHttpClient().newBuilder()
             .addInterceptor(authInterceptor)

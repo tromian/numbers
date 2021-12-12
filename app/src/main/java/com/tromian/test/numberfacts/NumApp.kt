@@ -15,9 +15,8 @@ class NumApp : Application(){
 
     override fun onCreate() {
         super.onCreate()
-        _appComponent = DaggerAppComponent.factory().create(
-            this
-        )
+        _appComponent = DaggerAppComponent.factory()
+            .create(this)
     }
 }
 
