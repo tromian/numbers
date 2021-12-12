@@ -6,4 +6,5 @@
     <string name="btn_random">Get random</string>
     <string name="tv_top">Find something interesting ...</string>
     <string name="edit_text_hint">Enter number</string>
+    <string name="btn_back">Back</string>
 </resources>
